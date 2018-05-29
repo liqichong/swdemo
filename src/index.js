@@ -6,7 +6,7 @@ import home from './modules/home';
 const app = Kar98k();
 
 app.use(createLoading({
-  include: ['^home/fetch'],
+  include: ['home/fetchList'],
 }))
   .module(home)
   .start('#app');
