@@ -9,10 +9,7 @@ export default {
     people : {},  // {1: {id, name, ...}}
   },
   effects: {
-    *fetchList({ payload }, { call, put, select }) {
-      const listData = yield select(state => state.home.list[payload]);
-      // do not send request if cached
-      if(listData) return;
+    *fetchList({ payload }, { call, put }) {
       const { data } = yield call(services.list, payload);
       // transform response from server 
       let list = { page: payload, count: data.count, prev: data.previous, next: data.next, people: [] };
