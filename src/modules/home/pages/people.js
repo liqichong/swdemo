@@ -20,15 +20,18 @@ class People extends Component {
             <DetailItem title='eye color'>{person.eye_color}</DetailItem>
             <DetailItem title='birth year'>{person.birth_year}</DetailItem>
             <DetailItem title='gender'>{person.gender}</DetailItem>
-            <DetailItem title='homeworld'>{planets[person.homeworld] || 'loading'}</DetailItem>
-            <DetailItem title='films'>{person.films.map(v => films[v] || 'loading').join(', ')}</DetailItem>
-            <DetailItem title='species'>{person.species.map(v => species[v] || 'loading').join(', ')}</DetailItem>
-            <DetailItem title='vehicles'>{person.vehicles.map(v => vehicles[v] || 'loading').join(', ')}</DetailItem>
-            <DetailItem title='starships'>{person.starships.map(v => starships[v] || 'loading').join(', ')}</DetailItem>
+            <DetailItem title='homeworld'>{planets[person.homeworld] || 'loading...'}</DetailItem>
+            <DetailItem title='films'>{person.films.length ? person.films.map(v => films[v] || 'loading...').join(', ') : 'N/A'}</DetailItem>
+            <DetailItem title='species'>{person.species.length ? person.species.map(v => species[v] || 'loading...').join(', ') : 'N/A'}</DetailItem>
+            <DetailItem title='vehicles'>{person.vehicles.length ? person.vehicles.map(v => vehicles[v] || 'loading...').join(', ') : 'N/A'}</DetailItem>
+            <DetailItem title='starships'>{person.starships.length ? person.starships.map(v => starships[v] || 'loading...').join(', ') : 'N/A'}</DetailItem>
           </div>
         ) : (
           <Loading/>
         )}
+        <div className='text-center mb-3'>
+          <button className='btn btn-dark btn-sm' onClick={this.props.history.goBack}>back</button>
+        </div>
       </div>
     );
   }
@@ -39,4 +42,4 @@ class People extends Component {
   }
 }
 
-export default connect(state => ({ ...state.home }))(People);
+export default connect(state => state.home)(People);
