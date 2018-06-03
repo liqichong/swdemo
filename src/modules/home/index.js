@@ -39,6 +39,13 @@ export default {
       yield put({ type: 'home/saveStarships', payload: people.starships.reduce((m, v, i) => { m[v] = starships[i]; return m; }, {}) });
     },
   },
+  *catch(err, action) {
+    alert(err);
+    console.group();
+    console.log('error', err);
+    console.log('action', action);
+    console.groupEnd();
+  },
   reducers: {
     saveList(state, { payload }) {
       return {
