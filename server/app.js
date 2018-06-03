@@ -24,9 +24,7 @@ app.get('*', (req, res) => {
 /*eslint-disable no-unused-vars*/
 app.use((err, req, res, next) => {
 /*eslint-enable no-unused-vars*/
-  res.status(500).json({
-    msg: err.message,
-  });
+  res.status(500).json(err);
 });
 
 app.listen(port, () => console.log(`app is running on port ${port}`));
