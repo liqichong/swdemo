@@ -26,6 +26,7 @@ class List extends Component {
   }
 
   componentDidMount() {
+    
     const { page = 1 } = this.props.match.params;
     this.props.dispatch({ type: 'home/fetchList', payload: page });
   }
